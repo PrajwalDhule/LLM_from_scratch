@@ -22,16 +22,19 @@ print(preprocessed[:30])
 
 # Building a vocabulary from the preprocessed (tokenised) text
 all_words = sorted(set(preprocessed))
+all_words.extend(["<|endoftext|>", "<|unk|>"])
 vocab = {token:integer for integer,token in enumerate(all_words)}
 
-class SimpleTokenizerV1:    
+class SimpleTokenizerV2:    
       def __init__(self, vocab): 
             self.str_to_int = vocab           
             self.int_to_str = {i:s for s,i in vocab.items()}           
       
       def encode(self, text):        
             preprocessed = re.split(r'([,.?_!"()\']|--|\s)', text) 
-            preprocessed = [ item.strip() for item in preprocessed if item.strip() ] 
+            preprocessed = [item.strip() for item in preprocessed if item.strip()]
+            preprocessed = [item if item in self.str_to_int else "<|unk|>" for item in preprocessed]
+             
             ids = [self.str_to_int[s] for s in preprocessed] 
             return ids    
       
@@ -40,7 +43,19 @@ class SimpleTokenizerV1:
             text = re.sub(r'\s+([,.?!"()\'])', r'\1', text)   
             return text
       
-tokenizer = SimpleTokenizerV1(vocab) 
-text =  """"It's the last he painted, you know," Mrs. Gisburn said with pardonable pride.""" 
-ids = tokenizer.encode(text) 
-print(tokenizer.decode(ids))
+# tokenizer = SimpleTokenizerV1(vocab) 
+# text =  """"It's the last he painted, you know," Mrs. Gisburn said with pardonable pride.""" 
+# ids = tokenizer.encode(text) 
+# print(tokenizer.decode(ids))
+
+text1 = "Hello, do you like tea?"
+text2 = "In the sunlit terraces of the palace."
+text3 = "painted."
+text4 = "pardonable."
+text5 = "lmao."
+text = " <|endoftext|> ".join((text1, text2, text3, text4, text5))
+print(text)
+tokenizer = SimpleTokenizerV2(vocab)
+# print(tokenizer.encode(text))
+print(tokenizer.decode(tokenizer.encode(text)))
+
