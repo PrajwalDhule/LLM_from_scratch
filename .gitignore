@@ -4,4 +4,4 @@ __pycache__/
 .ipynb_checkpoints
 data/raw/*
 setup_commands.txt
-stuff.txt
+# stuff.txt

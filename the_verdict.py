@@ -1,7 +1,9 @@
 import urllib.request
 import re
+from importlib.metadata import version 
+import tiktoken 
 
-# reading the text file from the URL of the text file
+# ---- Reading the text file from the URL of the text file ----
 url = ("https://raw.githubusercontent.com/rasbt/"
       "LLMs-from-scratch/main/ch02/01_main-chapter-code/"
       "the-verdict.txt")
@@ -10,17 +12,17 @@ urllib.request.urlretrieve(url, file_path)
 
 with open("the-verdict.txt", "r", encoding="utf-8") as f:
    raw_text = f.read()
-print("Total number of character:", len(raw_text))
-print(raw_text[:99])
+# print("Total number of character:", len(raw_text))
+# print(raw_text[:99])
 
-# Preprocessing the text to split the text into tokens
+# ---- Preprocessing the text to split the text into tokens ----
 preprocessed = re.split(r'([,.:;?_!"()\']|--|\s)', raw_text)
 preprocessed = [item.strip() for item in preprocessed if item.strip()]
-print(len(preprocessed))
-print(preprocessed[:30])
+# print(len(preprocessed))
+# print(preprocessed[:30])
 
 
-# Building a vocabulary from the preprocessed (tokenised) text
+# ---- Building a vocabulary from the preprocessed (tokenised) text ----
 all_words = sorted(set(preprocessed))
 all_words.extend(["<|endoftext|>", "<|unk|>"])
 vocab = {token:integer for integer,token in enumerate(all_words)}
@@ -54,8 +56,43 @@ text3 = "painted."
 text4 = "pardonable."
 text5 = "lmao."
 text = " <|endoftext|> ".join((text1, text2, text3, text4, text5))
-print(text)
+# print(text)
 tokenizer = SimpleTokenizerV2(vocab)
 # print(tokenizer.encode(text))
-print(tokenizer.decode(tokenizer.encode(text)))
+# print(tokenizer.decode(tokenizer.encode(text)))
 
+# --- Using tiktoken to implement BPE ----
+
+# print("tiktoken version:", version("tiktoken"))
+tokenizer = tiktoken.encoding_for_model("gpt-3.5-turbo")
+text = ("Hello, do you like tea? <|endoftext|> In the sunlit terraces" 
+        "of Akwirw ier." ) 
+integers = tokenizer.encode(text, allowed_special={"<|endoftext|>"}, disallowed_special=())
+print(integers)
+strings = tokenizer.decode(integers)
+print(strings)
+
+# ---- create input-target pairs ----
+with open("the-verdict.txt", "r", encoding="utf-8") as f:    
+      raw_text = f.read() 
+      
+enc_text = tokenizer.encode(raw_text) 
+print(len(enc_text))
+
+enc_sample = enc_text[50:]
+
+context_size = 4        
+x = enc_sample[:context_size] 
+y = enc_sample[1:context_size+1] 
+print(f"x: {x}") 
+print(f"y:      {y}")
+
+for i in range(1, context_size+1):    
+      context = enc_sample[:i]    
+      desired = enc_sample[i]    
+      print(context, "---->", desired)
+
+for i in range(1, context_size+1):    
+      context = enc_sample[:i]    
+      desired = enc_sample[i]    
+      print(tokenizer.decode(context), "---->", tokenizer.decode([desired]))

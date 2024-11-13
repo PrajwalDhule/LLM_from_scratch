@@ -1,0 +1,34 @@
+progress:
+
+start 2.6 (page 37 (59))
+
+Notes:
+
+- Appendix A - a lot about PyTorch
+- Transformers: has encoder and decoder 
+- BERT focused more on the encoder part to excel at text completion tasks, GPT on decoder for text generation.
+- zero shot: generalize to completely unseen tasks without any prior specific examples. 
+- few-shot learning: involves learning from a minimal number of examples the user provides as input
+
+- GPT models are pretrained on a relatively simple next-word prediction task
+- Modern LLMs are trained in two main steps: 
+  – First, they are pretrained on a large corpus of unlabeled text by using the prediction of the next word in a sentence as a label.
+  – Then, they are fine-tuned on a smaller, labeled target dataset to follow instructions or perform classification tasks.
+- LLMs are based on the transformer architecture. The key idea of the transformer  architecture is an attention mechanism that gives the LLM selective access
+- A computational graph is a directed graph that allows us to express and visualize mathematical expressions.
+- partial derivatives measure the rate at which a function changes with respect to one of its variables. 
+- A gradient is a vector containing all of the partial derivatives of a multivariate function, a function with more than one variable as input.
+- the chain rule is a way to compute gradients of a loss function given the model’s parameters in a computation graph. This provides the information needed to update each parameter to minimize the loss function.
+
+- To get embeddings, we first need to tokenize all the words and assign them token IDs 
+- we add a special token for new words not in a trained vocab. for eg: vocab: ("hello", id: 2), ("hi", id: 4).  text: "hello hi yo" -> "yo" will be treated as, say, a predefined token "<|unk|>" which we already add in the vocab during its creation.
+- <|endoftext|> is also a commonly used special token to mark separation of sentences - usually assigned the largest token ID value.
+- Byte-Pair Encoding (BPE) is commonly used to handle unknown words, more about BPE on page 34 (56) end, and GPT.
+
+
+
+
+# import os
+# import tempfile
+# cache_dir = os.path.join(tempfile.gettempdir(), "data-gym-cache") 
+# print(cache_dir)
