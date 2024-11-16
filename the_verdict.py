@@ -96,3 +96,8 @@ for i in range(1, context_size+1):
       context = enc_sample[:i]    
       desired = enc_sample[i]    
       print(tokenizer.decode(context), "---->", tokenizer.decode([desired]))
+
+import torch 
+torch.__version__
+
+# not latest, refer to the the_verdict.ipynb file
