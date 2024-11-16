@@ -1,10 +1,10 @@
 progress:
 
-code 2.7 page 42 (64)
-reading 2.8 (page 45 (67)) 
-& A.4 (page 263 (285))
+start 3 (page 50 (72))
 
 Notes:
+
+- KEEP REFERRING TO SUMMARIES OF CHAPTERS
 
 - Appendix A - a lot about PyTorch
 - Transformers: has encoder and decoder 
@@ -26,11 +26,14 @@ Notes:
 - we add a special token for new words not in a trained vocab. for eg: vocab: ("hello", id: 2), ("hi", id: 4).  text: "hello hi yo" -> "yo" will be treated as, say, a predefined token "<|unk|>" which we already add in the vocab during its creation.
 - <|endoftext|> is also a commonly used special token to mark separation of sentences - usually assigned the largest token ID value.
 - Byte-Pair Encoding (BPE) is commonly used to handle unknown words, more about BPE on page 34 (56) end, and GPT.
+- While token embeddings provide consistent vector representations for each token, they lack a sense of the token’s position in a sequence. To rectify this, two main types of positional embeddings exist: absolute and relative. OpenAI’s GPT models utilize absolute positional embeddings, which are added to the token embedding vectors and are optimized during the model training.
 
 -  In practice, we often use a third dataset, a so-called validation dataset, to find the opti
 mal hyperparameter settings. A validation dataset is similar to a test set. However,
  while we only want to use a test set precisely once to avoid biasing the evaluation, we
  usually use the validation set multiple times to tweak the model settings. 
+
+- KEEP REFERRING TO SUMMARIES OF CHAPTERS
 
 
 
