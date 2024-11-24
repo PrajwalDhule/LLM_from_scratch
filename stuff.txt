@@ -1,6 +1,7 @@
 progress:
 
-start 3 (page 50 (72))
+code: 3.3.1 (page 56 (78))
+read: 3.3.2 (page 61 (83))
 
 Notes:
 
@@ -32,6 +33,47 @@ Notes:
 mal hyperparameter settings. A validation dataset is similar to a test set. However,
  while we only want to use a test set precisely once to avoid biasing the evaluation, we
  usually use the validation set multiple times to tweak the model settings. 
+
+- ***(more should be read about 2.7 and 2.8 which isn't summarized here)***
+
+- In self-attention, the “self” refers to the mechanism’s ability to compute attention
+ weights by relating different positions within a single input sequence. It assesses and
+ learns the relationships and dependencies between various parts of the input itself,
+ such as words in a sentence or pixels in an image. 
+-This is in contrast to traditional attention mechanisms, where the focus is on the rela
+tionships between elements of two different sequences, such as in sequence-to
+sequence models where the attention might be between an input sequence and an
+ output sequence, such as the example depicted in figure 3.5. 
+
+
+- For example, consider an input text like “Your journey starts with one step.” In this
+ case, each element of the sequence, such as x(1), corresponds to a d-dimensional
+ embedding vector representing a specific token, like “Your.” Figure 3.7 shows these
+ input vectors as three-dimensional embeddings.
+- In self-attention, our goal is to calculate context vectors z(i) for each element x(i)
+ in the input sequence. A context vector can be interpreted as an enriched embedding
+ vector.
+- To illustrate this concept, let’s focus on the embedding vector of the second input
+ element, x(2) (which corresponds to the token “journey”), and the corresponding con
+text vector, z(2), shown at the bottom of figure 3.7. This enhanced context vector, z(2),
+ is an embedding that contains information about x(2) and all other input elements,
+ x(1) to x(T)
+
+ - The goal of self-attention is to compute a context vector for each input 
+element that combines information from all other input elements. In this example, 
+we compute the context vector z(2). The importance or contribution of each input 
+element for computing z(2) is determined by the attention weights 21 to 2T. When 
+computing z(2), the attention weights are calculated with respect to input element 
+x(2) and all other inputs. (fig 3.7)
+- The context vector z(2) is computed as a combination of all input vectors weighted with respect to input element x(2)
+- In the context of self-attention mechanisms, the dot product determines the extent to which
+ each element in a sequence focuses on, or “attends to,” any other element: the
+ higher the dot product, the higher the similarity and attention score between two
+ elements.
+- to summarize: attention scores (n) -> attention weights (n) -> context vector (m)
+  no of dimensions: n = no of input tokens, m = no of dimensions
+
+- 
 
 - KEEP REFERRING TO SUMMARIES OF CHAPTERS
 
