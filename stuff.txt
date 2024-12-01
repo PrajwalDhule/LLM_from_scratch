@@ -1,7 +1,7 @@
 progress:
 
-code: 3.3.1 (page 56 (78))
-read: 3.3.2 (page 61 (83))
+3.4.1 (page 68 (90))
+summary: start 3.4 (page 64 (86))
 
 Notes:
 
@@ -72,7 +72,7 @@ x(2) and all other inputs. (fig 3.7)
  elements.
 - to summarize: attention scores (n) -> attention weights (n) -> context vector (m)
   no of dimensions: n = no of input tokens, m = no of dimensions
-
+- multiplying embedding vectors with each other (to get attention scores) and other similar operations can simplified and made efficient using matrix multpln
 - 
 
 - KEEP REFERRING TO SUMMARIES OF CHAPTERS
