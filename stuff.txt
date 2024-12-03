@@ -1,7 +1,8 @@
 progress:
 
-3.4.1 (page 68 (90))
+start 3.5 (page 74 (96)) (EXPLORE ABOUT WHY of the stuff so far)
 summary: start 3.4 (page 64 (86))
+EXERCISE 3.1 (page 73 (95))
 
 Notes:
 
