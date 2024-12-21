@@ -1,7 +1,6 @@
 progress:
 
-start 3.5 (page 74 (96)) (EXPLORE ABOUT WHY of the stuff so far)
-summary: start 3.4 (page 64 (86))
+start 4 (page 92 (114)) (EXPLORE ABOUT WHY of the stuff so far)
 EXERCISE 3.1 (page 73 (95))
 
 Notes:
@@ -30,10 +29,7 @@ Notes:
 - Byte-Pair Encoding (BPE) is commonly used to handle unknown words, more about BPE on page 34 (56) end, and GPT.
 - While token embeddings provide consistent vector representations for each token, they lack a sense of the token’s position in a sequence. To rectify this, two main types of positional embeddings exist: absolute and relative. OpenAI’s GPT models utilize absolute positional embeddings, which are added to the token embedding vectors and are optimized during the model training.
 
--  In practice, we often use a third dataset, a so-called validation dataset, to find the opti
-mal hyperparameter settings. A validation dataset is similar to a test set. However,
- while we only want to use a test set precisely once to avoid biasing the evaluation, we
- usually use the validation set multiple times to tweak the model settings. 
+-  In practice, we often use a third dataset, a so-called validation dataset, to find the optimal hyperparameter settings. A validation dataset is similar to a test set. However, while we only want to use a test set precisely once to avoid biasing the evaluation, we usually use the validation set multiple times to tweak the model settings. 
 
 - ***(more should be read about 2.7 and 2.8 which isn't summarized here)***
 
@@ -48,17 +44,10 @@ sequence models where the attention might be between an input sequence and an
 
 
 - For example, consider an input text like “Your journey starts with one step.” In this
- case, each element of the sequence, such as x(1), corresponds to a d-dimensional
- embedding vector representing a specific token, like “Your.” Figure 3.7 shows these
+ case, each element of the sequence, such as x(1), corresponds to a d-dimensional embedding vector representing a specific token, like “Your.” Figure 3.7 shows these
  input vectors as three-dimensional embeddings.
-- In self-attention, our goal is to calculate context vectors z(i) for each element x(i)
- in the input sequence. A context vector can be interpreted as an enriched embedding
- vector.
-- To illustrate this concept, let’s focus on the embedding vector of the second input
- element, x(2) (which corresponds to the token “journey”), and the corresponding con
-text vector, z(2), shown at the bottom of figure 3.7. This enhanced context vector, z(2),
- is an embedding that contains information about x(2) and all other input elements,
- x(1) to x(T)
+- In self-attention, our goal is to calculate context vectors z(i) for each element x(i) in the input sequence. A context vector can be interpreted as an enriched embedding vector.
+- To illustrate this concept, let’s focus on the embedding vector of the second input element, x(2) (which corresponds to the token “journey”), and the corresponding context vector, z(2), shown at the bottom of figure 3.7. This enhanced context vector, z(2), is an embedding that contains information about x(2) and all other input elements, x(1) to x(T)
 
  - The goal of self-attention is to compute a context vector for each input 
 element that combines information from all other input elements. In this example, 
@@ -74,8 +63,17 @@ x(2) and all other inputs. (fig 3.7)
 - to summarize: attention scores (n) -> attention weights (n) -> context vector (m)
   no of dimensions: n = no of input tokens, m = no of dimensions
 - multiplying embedding vectors with each other (to get attention scores) and other similar operations can simplified and made efficient using matrix multpln
-- 
 
+- FROM HERE, REFER TO CODE MORE AND COME HERE FOR EXTRA POINTS TO ELBORATE FURTHER AND ADD ON
+
+- The embedding sizes of the token inputs and context embeddings are the same in GPT models (d_in = d_out).
+- causal attention does not focus on future tokens, mainly to avoid overfitting
+- multi-head attention layers multiple causal attention modules with their own set of weights and combines their outputs
+- page 111 -> see appendix B for more details on output projection layer
+
+- read more about information leakage page 98
+- refer to more stuff for more details about topics
+  (currently softmax functions)
 - KEEP REFERRING TO SUMMARIES OF CHAPTERS
 
 

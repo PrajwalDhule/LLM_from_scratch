@@ -1,0 +1,9 @@
+more stuff
+
+1) SoftMax functions:
+- converts set of values to probabilities using e^x (for eg an embedding vector with 3 dims -> 3 values)
+- it can be thought of plotting the values on x-axis and see where they meet the e^x curve. 
+  this point from the point on x-axis can be thought of as the height for that value. SoftMax shrinks the e^x curve so that the heights add up to 1.
+  increasing a value causes the height to increase in a sigmoid curve pattern and the other values to decrease in a sigmoid curve pattern.
+- increasing all the values by the same measure, doesn't change the result
+- multiplying all the values by a measure > 1, it will space out the probabilities wrt each other whereas measure approaching 0, it will clump the values closer to each other (more random), this measure is also known as the temperature setting in training models.
