@@ -1,6 +1,6 @@
 progress:
 
-start 4 (page 92 (114)) (EXPLORE ABOUT WHY of the stuff so far)
+start 4.2 (page 99 (121)) (EXPLORE ABOUT WHY of the stuff so far)
 EXERCISE 3.1 (page 73 (95))
 
 Notes:
@@ -28,6 +28,7 @@ Notes:
 - <|endoftext|> is also a commonly used special token to mark separation of sentences - usually assigned the largest token ID value.
 - Byte-Pair Encoding (BPE) is commonly used to handle unknown words, more about BPE on page 34 (56) end, and GPT.
 - While token embeddings provide consistent vector representations for each token, they lack a sense of the token’s position in a sequence. To rectify this, two main types of positional embeddings exist: absolute and relative. OpenAI’s GPT models utilize absolute positional embeddings, which are added to the token embedding vectors and are optimized during the model training.
+- say, the token embeddings had 256 dimensions for each input token, we would create a pos_embedding of 256 dimensions (like [0,1,2,.....]) and append to token embeddings to get final input embeddings
 
 -  In practice, we often use a third dataset, a so-called validation dataset, to find the optimal hyperparameter settings. A validation dataset is similar to a test set. However, while we only want to use a test set precisely once to avoid biasing the evaluation, we usually use the validation set multiple times to tweak the model settings. 
 
@@ -70,6 +71,8 @@ x(2) and all other inputs. (fig 3.7)
 - causal attention does not focus on future tokens, mainly to avoid overfitting
 - multi-head attention layers multiple causal attention modules with their own set of weights and combines their outputs
 - page 111 -> see appendix B for more details on output projection layer
+- in single-headed, we process every dimension (can be thought of as different properties like syntax, semantics, etc.) at once, in multi-headed, we process subset of dimensions independently and combining them at the end.
+  can be thought of as 6 * 6 vs (3 * 3) + (3 * 3)
 
 - read more about information leakage page 98
 - refer to more stuff for more details about topics
