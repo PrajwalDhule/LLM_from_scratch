@@ -7,4 +7,5 @@ __pycache__/
 data/raw/*
 setup_commands.txt
 dummy.py
+dummy_extra.ipynb
 # stuff.txt
