@@ -8,4 +8,6 @@ data/raw/*
 setup_commands.txt
 dummy.py
 dummy_extra.ipynb
+gpt2/
+*.pth
 # stuff.txt

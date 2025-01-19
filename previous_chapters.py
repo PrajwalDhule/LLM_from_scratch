@@ -130,15 +130,15 @@ Methods:
 
         # Shape: (b, num_tokens, num_heads, head_dim)
         context_vec = (attn_weights @ values).transpose(1, 2) 
-        print("attn_weights shape:", attn_weights.shape)
-        print("values shape:", values.shape)
-        print("context_vec shape:", context_vec.shape)
+        # print("attn_weights shape:", attn_weights.shape)
+        # print("values shape:", values.shape)
+        # print("context_vec shape:", context_vec.shape)
         
         # Combine heads, where self.d_out = self.num_heads * self.head_dim
         context_vec = context_vec.contiguous().view(b, num_tokens, self.d_out)
-        print("context_vec shape:", context_vec.shape)
+        # print("context_vec shape:", context_vec.shape)
         context_vec = self.out_proj(context_vec) # optional projection
-        print("context_vec shape:", context_vec.shape)
+        # print("context_vec shape:", context_vec.shape)
 
         return context_vec
     
@@ -266,7 +266,6 @@ def generate_text_simple(model, idx, max_new_tokens, context_size):
         idx = torch.cat((idx, idx_next), dim=1)  # (batch, n_tokens+1)
 
     return idx
-
 
 if __name__ == "__main__":
 
